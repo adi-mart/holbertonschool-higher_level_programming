@@ -21,12 +21,16 @@ tests calculs:
     98
 
     >>> add_integer(95.99, 2.1)
-    98
+    97
 
     >>> add_integer(-1, -1)
     -2
 
+    >>> add_integer(0, 0)
+    0
+
 tests erreurs:
+
     >>> add_integer("3", 2)
     Traceback (most recent call last):
         ...
@@ -42,8 +46,6 @@ tests erreurs:
         ...
     TypeError: a must be an integer
 
-    >>> add_integer(-1, 2)
-    -1
 
 tests infini et NaN:
     >>> add_integer(float('inf'), 2)
