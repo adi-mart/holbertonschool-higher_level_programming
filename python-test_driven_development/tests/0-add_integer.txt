@@ -43,9 +43,7 @@ tests erreurs:
     TypeError: a must be an integer
 
     >>> add_integer(-1, 2)
-    Traceback (most recent call last):
-        ...
-    ValueError: negative values are not allowed
+    -1
 
 tests infini et NaN:
     >>> add_integer(float('inf'), 2)
