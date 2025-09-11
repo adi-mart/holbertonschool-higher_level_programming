@@ -23,6 +23,9 @@ tests calculs:
     >>> add_integer(95.99, 2.1)
     98
 
+    >>> add_integer(-1, -1)
+    -2
+
 tests erreurs:
     >>> add_integer("3", 2)
     Traceback (most recent call last):
@@ -38,6 +41,11 @@ tests erreurs:
     Traceback (most recent call last):
         ...
     TypeError: a must be an integer
+
+    >>> add_integer(-1, 2)
+    Traceback (most recent call last):
+        ...
+    ValueError: negative values are not allowed
 
 tests infini et NaN:
     >>> add_integer(float('inf'), 2)
