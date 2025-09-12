@@ -4,6 +4,9 @@
 
 Doctest pour la fonction matrix_divided
 
+Prototype:
+    def matrix_divided(matrix, div):
+
 Import:
     >>> matrix_divided = __import__('2-matrix_divided').matrix_divided
 
@@ -26,7 +29,7 @@ tests erreurs:
     >>> matrix_divided([[1, 2], [3, 'a']], 2)
     Traceback (most recent call last):
         ...
-    TypeError: matrix must be a matrice (liste de listes) d'entiers/flottants
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
 
     >>> matrix_divided([[1, 2], [3, 4, 5]], 2)
     Traceback (most recent call last):
@@ -36,7 +39,7 @@ tests erreurs:
     >>> matrix_divided("not a matrix", 2)
     Traceback (most recent call last):
         ...
-    TypeError: matrix must be a matrice (liste de listes) d'entiers/flottants
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
 
     >>> matrix_divided([[1, 2], [3, 4]], "a")
     Traceback (most recent call last):
