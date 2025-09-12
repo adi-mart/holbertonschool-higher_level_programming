@@ -3,7 +3,7 @@ def matrix_divided(matrix, div):
     if (not isinstance(matrix, list) or
         not all(isinstance(row, list) for row in matrix) or
         not all(all(isinstance(x, (int, float)) for x in row) for row in matrix)):
-        raise TypeError("matrix must be a matrice (liste de listes) d'entiers/flottants")
+        raise TypeError("matrix must be a matrix (list of lists) of integers/floats")
 
     len_row = len(matrix[0])
     if not all(len(row) == len_row for row in matrix):
