@@ -37,7 +37,7 @@ class Square:
     @position.setter
     def position(self, value):
         """Set the position of the square with validation."""
-        if (not isinstance(value, tuple) or
+        if (not isinstance(value, (tuple, list)) or
                 len(value) != 2 or
                 not all(isinstance(num, int) for num in value) or
                 not all(num >= 0 for num in value)):
@@ -55,4 +55,4 @@ class Square:
         for i in range(self.position[1]):
             print("")
         for i in range(self.__size):
-            print(" " * self.__position[0] + "#" * self.__size)
+            print(" " * self.position[0] + "#" * self.size)
