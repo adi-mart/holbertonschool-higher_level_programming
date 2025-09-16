@@ -12,7 +12,7 @@ class Square:
             raise TypeError("size must be an integer")
         if size < 0:
             raise ValueError("size must be >= 0")
-        self.__size = size
+        self.size = size
         self.position = position
 
     @property
@@ -51,8 +51,8 @@ class Square:
     def my_print(self):
         """Print the square with the '#' character considering its position."""
         if self.__size == 0:
-            print()
+            print("")
         for i in range(self.position[1]):
-            print(" ")
+            print("")
         for i in range(self.__size):
             print(" " * self.__position[0] + "#" * self.__size)
