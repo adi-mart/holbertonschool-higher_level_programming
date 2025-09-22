@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Module that defines an empty class BaseGeometry."""
+"""Module that defines a class Rectangle that inherits from BaseGeometry."""
 
 
 class BaseGeometry:
@@ -14,9 +14,6 @@ class BaseGeometry:
             raise TypeError("{} must be an integer".format(name))
         if value <= 0:
             raise ValueError("{} must be greater than 0".format(name))
-
-
-"""Module that defines a class Rectangle that inherits from BaseGeometry."""
 
 
 class Rectangle(BaseGeometry):
