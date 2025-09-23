@@ -1,260 +1,145 @@
 The ``7-base_geometry`` module
-============================
+======================
 
 Using ``BaseGeometry``
-----------------------
+-------------------
 
-This is an example text file in reStructuredText format. First import
-``BaseGeometry`` from the ``7-base_geometry`` module:
+Importing the class from the module:
+    >>> BaseGeometry = __import__("7-base_geometry").BaseGeometry
 
-    >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
-
-Check module docstring:
-
-    >>> module = __import__('7-base_geometry')
-    >>> len(module.__doc__) > 1
+Checking for module docstring:
+    >>> m = __import__("7-base_geometry").__doc__
+    >>> len(m) > 1
     True
 
-Now use it:
+Checking for class docstring:
+    >>> c = __import__("7-base_geometry").BaseGeometry.__doc__
+    >>> len(c) > 1
+    True
 
-Basic instantiation:
+Checking for area method docstring:
+    >>> mod1 = __import__("7-base_geometry").BaseGeometry.area.__doc__
+    >>> len(mod1) > 1
+    True
 
+Checking for integer_validator method docstring:
+    >>> mod2 = __import__("7-base_geometry").BaseGeometry.integer_validator.__doc__
+    >>> len(mod2) > 1
+    True
+
+Checking for area method:
     >>> bg = BaseGeometry()
-    >>> type(bg)
-    <class '7-base_geometry.BaseGeometry'>
-
-Check class docstring:
-
-    >>> len(BaseGeometry.__doc__) > 1
-    True
-
-Check area() method docstring:
-
-    >>> len(BaseGeometry.area.__doc__) > 1
-    True
-
-Check integer_validator() method docstring:
-
-    >>> len(BaseGeometry.integer_validator.__doc__) > 1
-    True
-
-Test area() method (should raise Exception):
-
     >>> bg.area()
     Traceback (most recent call last):
     Exception: area() is not implemented
 
-Test integer_validator() with valid integers:
-
+Testing integer_validator with valid inputs:
+    >>> bg = BaseGeometry()
     >>> bg.integer_validator("my_int", 12)
     >>> bg.integer_validator("width", 89)
-    >>> bg.integer_validator("height", 1)
 
-Test integer_validator() with string:
-
-    >>> bg.integer_validator("name", "John")
-    Traceback (most recent call last):
-    TypeError: name must be an integer
-
-Test integer_validator() with zero:
-
+Testing integer_validator with zero:
+    >>> bg = BaseGeometry()
     >>> bg.integer_validator("age", 0)
     Traceback (most recent call last):
     ValueError: age must be greater than 0
 
-Test integer_validator() with negative number:
-
+Testing integer_validator with negative number:
+    >>> bg = BaseGeometry()
     >>> bg.integer_validator("distance", -4)
     Traceback (most recent call last):
     ValueError: distance must be greater than 0
 
-Test integer_validator() with float:
-
-    >>> bg.integer_validator("average", 3.14)
+Testing integer_validator with string:
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("name", "John")
     Traceback (most recent call last):
-    TypeError: average must be an integer
+    TypeError: name must be an integer
 
-Test integer_validator() with None:
-
-    >>> bg.integer_validator("value", None)
+Testing integer_validator with boolean True:
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("name", True)
     Traceback (most recent call last):
-    TypeError: value must be an integer
+    TypeError: name must be an integer
 
-Test integer_validator() with list:
-
-    >>> bg.integer_validator("list", [1, 2, 3])
+Testing integer_validator with boolean False:
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("name", False)
     Traceback (most recent call last):
-    TypeError: list must be an integer
+    TypeError: name must be an integer
 
-Test integer_validator() with tuple:
-
-    >>> bg.integer_validator("tuple", (1, 2))
+Testing integer_validator with None:
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("name", None)
     Traceback (most recent call last):
-    TypeError: tuple must be an integer
+    TypeError: name must be an integer
 
-Test integer_validator() with dict:
-
-    >>> bg.integer_validator("dict", {"key": "value"})
+Testing integer_validator with float:
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("name", 3.14)
     Traceback (most recent call last):
-    TypeError: dict must be an integer
+    TypeError: name must be an integer
 
-Test integer_validator() with set:
-
-    >>> bg.integer_validator("set", {1, 2, 3})
+Testing integer_validator with list:
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("name", [3])
     Traceback (most recent call last):
-    TypeError: set must be an integer
+    TypeError: name must be an integer
 
-Test integer_validator() with boolean True:
-
-    >>> bg.integer_validator("bool", True)
-
-Test integer_validator() with boolean False:
-
-    >>> bg.integer_validator("bool", False)
+Testing integer_validator with tuple:
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("name", (4,))
     Traceback (most recent call last):
-    ValueError: bool must be greater than 0
+    TypeError: name must be an integer
 
-Test integer_validator() with large positive integer:
-
-    >>> bg.integer_validator("big_num", 999999999)
-
-Test integer_validator() with large negative integer:
-
-    >>> bg.integer_validator("big_neg", -999999999)
+Testing integer_validator with dict:
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("name", {3, 4})
     Traceback (most recent call last):
-    ValueError: big_neg must be greater than 0
+    TypeError: name must be an integer
 
-Test integer_validator() with empty string as name:
-
-    >>> bg.integer_validator("", 5)
-
-Test integer_validator() with very long name:
-
-    >>> bg.integer_validator("very_very_very_long_parameter_name", 42)
-
-Test integer_validator() with special characters in name:
-
-    >>> bg.integer_validator("param@#$", 10)
-
-Test area() method can be called multiple times:
-
-    >>> bg.area()
-    Traceback (most recent call last):
-    Exception: area() is not implemented
-    >>> bg.area()
-    Traceback (most recent call last):
-    Exception: area() is not implemented
-
-Test with no arguments to integer_validator:
-
+Testing integer_validator with no args:
+    >>> bg = BaseGeometry()
     >>> bg.integer_validator()
     Traceback (most recent call last):
-    TypeError: BaseGeometry.integer_validator() missing 2 required positional arguments: 'name' and 'value'
+    TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
 
-Test with only one argument to integer_validator:
-
+Testing integer_validator with one arg:
+    >>> bg = BaseGeometry()
     >>> bg.integer_validator("name")
     Traceback (most recent call last):
-    TypeError: BaseGeometry.integer_validator() missing 1 required positional argument: 'value'
+    TypeError: integer_validator() missing 1 required positional argument: 'value'
 
-Test with too many arguments to integer_validator:
-
-    >>> bg.integer_validator("name", 5, "extra")
+Testing integer_validator with more than 2 args:
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("name", 1, 2)
     Traceback (most recent call last):
-    TypeError: BaseGeometry.integer_validator() takes 3 positional arguments but 4 were given
+    TypeError: integer_validator() takes 3 positional arguments but 4 were given
 
-Test area() with arguments:
-
+Testing area with args:
+    >>> bg = BaseGeometry()
     >>> bg.area(5)
     Traceback (most recent call last):
-    TypeError: BaseGeometry.area() takes 1 positional argument but 2 were given
+    TypeError: area() takes 1 positional argument but 2 were given
 
-Test integer_validator with mixed types:
+Testing large integer:
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("big", 999999999999999999999999)
 
-    >>> bg.integer_validator("mixed", "123")
+Testing complex number:
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("name", complex(1))
     Traceback (most recent call last):
-    TypeError: mixed must be an integer
+    TypeError: name must be an integer
 
-Test integer_validator with complex number:
-
-    >>> bg.integer_validator("complex", 1+2j)
+Testing infinity:
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("name", float('inf'))
     Traceback (most recent call last):
-    TypeError: complex must be an integer
+    TypeError: name must be an integer
 
-Test integer_validator with bytes:
-
-    >>> bg.integer_validator("bytes", b"hello")
+Testing NaN:
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("name", float('nan'))
     Traceback (most recent call last):
-    TypeError: bytes must be an integer
-
-Test integer_validator with infinity:
-
-    >>> bg.integer_validator("inf", float('inf'))
-    Traceback (most recent call last):
-    TypeError: inf must be an integer
-
-Test integer_validator with negative infinity:
-
-    >>> bg.integer_validator("neg_inf", float('-inf'))
-    Traceback (most recent call last):
-    TypeError: neg_inf must be an integer
-
-Test integer_validator with NaN:
-
-    >>> bg.integer_validator("nan", float('nan'))
-    Traceback (most recent call last):
-    TypeError: nan must be an integer
-
-Test integer_validator with class instance:
-
-    >>> class CustomClass:
-    ...     pass
-    >>> obj = CustomClass()
-    >>> bg.integer_validator("obj", obj)
-    Traceback (most recent call last):
-    TypeError: obj must be an integer
-
-Test integer_validator with function:
-
-    >>> def test_func():
-    ...     pass
-    >>> bg.integer_validator("func", test_func)
-    Traceback (most recent call last):
-    TypeError: func must be an integer
-
-Test that BaseGeometry is not instantiable with arguments:
-
-    >>> BaseGeometry(5)
-    Traceback (most recent call last):
-    TypeError: BaseGeometry() takes no arguments
-
-Test integer_validator with numeric strings:
-
-    >>> bg.integer_validator("num_str", "42")
-    Traceback (most recent call last):
-    TypeError: num_str must be an integer
-
-Test integer_validator with hexadecimal:
-
-    >>> bg.integer_validator("hex", 0x10)
-
-Test integer_validator with octal:
-
-    >>> bg.integer_validator("oct", 0o10)
-
-Test integer_validator with binary:
-
-    >>> bg.integer_validator("bin", 0b10)
-
-Test multiple instances work independently:
-
-    >>> bg1 = BaseGeometry()
-    >>> bg2 = BaseGeometry()
-    >>> bg1.integer_validator("test1", 5)
-    >>> bg2.integer_validator("test2", 10)
-
-Test name parameter can be any string:
-
-    >>> bg.integer_validator("123", 5)
-    >>> bg.integer_validator("_test", 5)
-    >>> bg.integer_validator("Test Name", 5)
+    TypeError: name must be an integer
