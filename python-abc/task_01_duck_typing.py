@@ -94,8 +94,8 @@ class Rectangle(Shape):
             width (float): The width of the rectangle.
             height (float): The height of the rectangle.
         """
-        self.__width = abs(width)
-        self.__height = abs(height)
+        self.__width = width
+        self.__height = height
 
     def area(self):
         """
