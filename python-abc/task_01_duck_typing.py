@@ -131,7 +131,7 @@ def shape_info(obj):
 
 
 if __name__ == "__main__":
-    circle = Circle(5)
-    rectangle = Rectangle(4, 7)
+    circle = Circle(radius=4)
+    rectangle = Rectangle(width=2, height=6)
     shape_info(circle)
     shape_info(rectangle)
