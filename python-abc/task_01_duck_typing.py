@@ -55,3 +55,10 @@ def shape_info(obj):
     """Print the area and perimeter of a shape object."""
     print("Area: {}".format(obj.area()))
     print("Perimeter: {}".format(obj.perimeter()))
+
+
+if __name__ == "__main__":
+    circle = Circle(7)
+    rectangle = Rectangle(2, 3)
+    shape_info(circle)
+    shape_info(rectangle)
