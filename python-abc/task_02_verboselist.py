@@ -5,23 +5,23 @@ class VerboseList(list):
     def append(self, item):
         """Append an item to the list and print a message."""
         super().append(item)
-        print(f"Added {item} to the list.")
+        print(f"Added [{item}] to the list.")
 
     def extend(self, iterable):
         """Extend the list by appending elements from the iterable
         and print a message."""
         super().extend(iterable)
-        print(f"Extended the list with {len(iterable)} items.")
+        print(f"Extended the list with [{len(iterable)}] items.")
 
     def remove(self, item):
         """Remove an item from the list and print a message."""
         super().remove(item)
-        print(f"Removed {item} from the list.")
+        print(f"Removed [{item}] from the list.")
 
     def pop(self, index=-1):
         """Remove and return an item at the given index and print a message."""
         item = super().pop(index)
-        print(f"Popped {item} from the list.")
+        print(f"Popped [{item}] from the list.")
 
 
 if __name__ == "__main__":
