@@ -1,4 +1,10 @@
 #!/usr/bin/python3
+"""
+Module defining a subclass of list that prints messages
+when items are added or removed.
+"""
+
+
 class VerboseList(list):
     """A subclass of list that prints messages on item addition and removal."""
 
@@ -22,6 +28,7 @@ class VerboseList(list):
         """Remove and return an item at the given index and print a message."""
         item = super().pop(index)
         print(f"Popped [{item}] from the list.")
+        return (item)
 
 
 if __name__ == "__main__":
@@ -30,3 +37,4 @@ if __name__ == "__main__":
     VL.extend([7, 8, 9])
     VL.remove(8)
     VL.pop()
+    VL.pop(0)
