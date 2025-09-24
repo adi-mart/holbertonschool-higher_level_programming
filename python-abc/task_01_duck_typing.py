@@ -58,7 +58,7 @@ class Circle(Shape):
         Args:
             radius (float): The radius of the circle.
         """
-        self.__radius = radius
+        self.__radius = abs(radius)
 
     def area(self):
         """
@@ -94,8 +94,8 @@ class Rectangle(Shape):
             width (float): The width of the rectangle.
             height (float): The height of the rectangle.
         """
-        self.__width = width
-        self.__height = height
+        self.__width = abs(width)
+        self.__height = abs(height)
 
     def area(self):
         """
