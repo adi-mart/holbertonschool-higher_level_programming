@@ -27,8 +27,8 @@ class Dragon(SwimMixin, FlyMixin):
 
 
 if __name__ == "__main__":
-    dragon = Dragon()
-    dragon.roar()
-    dragon.swim()
-    dragon.fly()
-    dragon.habitat()
+    draco = Dragon()
+    draco.roar()
+    draco.swim()
+    draco.fly()
+    draco.habitat()
