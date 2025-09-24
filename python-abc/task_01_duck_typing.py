@@ -60,5 +60,7 @@ def shape_info(obj):
 if __name__ == "__main__":
     circle = Circle(7)
     rectangle = Rectangle(2, 3)
+    print("Circle:")
     shape_info(circle)
+    print("Rectangle:")
     shape_info(rectangle)
