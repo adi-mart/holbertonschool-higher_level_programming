@@ -3,8 +3,10 @@
 Module defining an abstract base class for geometric shapes and
 concrete subclasses for Circle and Rectangle.
 
-This module demonstrates the use of abstract base classes (ABC) and duck typing in Python.
-It provides a blueprint for shapes and allows handling of different shape objects uniformly.
+This module demonstrates the use of abstract base classes (ABC)
+and duck typing in Python.
+It provides a blueprint for shapes and allows handling of different
+shape objects uniformly.
 """
 from abc import ABC, abstractmethod
 import math
@@ -46,7 +48,8 @@ class Circle(Shape):
     """
     Concrete class representing a circle.
 
-    Inherits from Shape and implements area and perimeter calculations for a circle.
+    Inherits from Shape and implements area and perimeter
+    calculations for a circle.
     """
     def __init__(self, radius):
         """
@@ -80,7 +83,8 @@ class Rectangle(Shape):
     """
     Concrete class representing a rectangle.
 
-    Inherits from Shape and implements area and perimeter calculations for a rectangle.
+    Inherits from Shape and implements area and perimeter
+    calculations for a rectangle.
     """
     def __init__(self, width, height):
         """
