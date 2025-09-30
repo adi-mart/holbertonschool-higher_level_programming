@@ -30,11 +30,11 @@ class CustomObject:
         Args:
             filename (str): The filename to save the serialized object to
         """
-        if not isinstance(filename, str) or not filename:
-            return None
-        else:
+        try:
             with open(filename, 'wb') as f:
                 pickle.dump(self, f)
+        except (Exception):
+            pass
 
     @classmethod
     def deserialize(cls, filename):
@@ -46,9 +46,9 @@ class CustomObject:
         Returns:
             CustomObject or None: The deserialized object or None if error
         """
-        if not isinstance(filename, str) or not filename:
-            return None
-        else:
+        try:
             with open(filename, 'rb') as f:
                 loaded_data = pickle.load(f)
             return (loaded_data)
+        except (Exception):
+            pass
