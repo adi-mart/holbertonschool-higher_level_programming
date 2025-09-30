@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """Basic serialization module for JSON operations."""
-import pickle
+import json
 
 
 def serialize_and_save_to_file(data, filename):
@@ -10,8 +10,8 @@ def serialize_and_save_to_file(data, filename):
         data: A Python Dictionary with data
         filename: The filename of the output JSON file
     """
-    with open(filename, 'wb') as f:
-        pickle.dump(data, f)
+    with open(filename, 'w', encoding='utf-8') as f:
+        json.dump(data, f)
 
 
 def load_and_deserialize(filename):
@@ -23,6 +23,6 @@ def load_and_deserialize(filename):
     Returns:
         A Python Dictionary with the deserialized JSON data from the file
     """
-    with open(filename, 'rb') as f:
-        loaded_data = pickle.load(f)
+    with open(filename, 'r', encoding='utf-8') as f:
+        loaded_data = json.load(f)
     return (loaded_data)
