@@ -8,35 +8,46 @@ class Student:
     """
     Class that defines a student
     """
-    
+
     def __init__(self, first_name, last_name, age):
         """
         Initialize a Student instance
-        
+
         Args:
             first_name (str): first name of the student
             last_name (str): last name of the student
             age (int): age of the student
         """
-        pass
-    
+        self.first_name = first_name
+        self.last_name = last_name
+        self.age = age
+
     def to_json(self, attrs=None):
         """
         Retrieve a dictionary representation of a Student instance
-        
+
         Args:
             attrs (list): list of attribute names to retrieve
-            
+
         Returns:
             dict: dictionary representation of the student
         """
-        pass
-    
+        if attrs is None:
+            return (self.__dict__)
+        if isinstance(attrs, list):
+            result = {}
+            for i in attrs:
+                if i in self.__dict__:
+                    result[i] = self.__dict__[i]
+            return (result)
+        return (self.__dict__)
+
     def reload_from_json(self, json):
         """
         Replace all attributes of the Student instance
-        
+
         Args:
             json (dict): dictionary with new attribute values
         """
-        pass
+        for key in json:
+            self.__dict__[key] = json[key]
