@@ -10,10 +10,10 @@ def serialize_to_xml(dictionary, filename):
         dictionary (dict): The Python dictionary to serialize
         filename (str): The filename to save the XML data to
     """
-    root = ET.Element("root")
+    root = ET.Element("data")
     for key, value in dictionary.items():
         new_element = ET.SubElement(root, key)
-        new_value = str(new_element)
+        new_element.text = str(value)
     tree = ET.ElementTree(root)
     tree.write(filename)
 
