@@ -37,7 +37,7 @@ def fetch_and_save_posts():
             writer.writeheader()
             for i in posts:
                 writer.writerow({
-                    "id": i.get("id"),
-                    "title": i.get("title"),
-                    "body": i.get("body")
+                    "id": i["id"],
+                    "title": i["title"],
+                    "body": i["body"]
                 })
