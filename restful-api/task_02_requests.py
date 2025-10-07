@@ -15,7 +15,7 @@ def fetch_and_print_posts():
     Also prints the status code of the response.
     """
     response = requests.get("https://jsonplaceholder.typicode.com/posts")
-    print(f"(Status Code): {response.status_code}")
+    print(f"Status Code: {response.status_code}")
     if response.status_code == 200:
         posts = response.json()
         for i in posts:
@@ -28,7 +28,7 @@ def fetch_and_save_posts():
     Creates posts.csv with columns: id, title, body
     """
     response = requests.get("https://jsonplaceholder.typicode.com/posts")
-    print(f"(Status Code): {response.status_code}")
+    print(f"Status Code: {response.status_code}")
     if response.status_code == 200:
         posts = response.json()
         with open('posts.csv', "w", newline="") as csvfile:
