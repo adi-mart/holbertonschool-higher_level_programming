@@ -6,11 +6,7 @@ This module creates a Flask API with multiple endpoints for user management.
 
 from flask import Flask, jsonify, request
 
-# Initialize Flask application
 app = Flask(__name__)
-
-# In-memory storage for users
-# Example: users = {"jane": {"name": "Jane", "age": 28, "city": "Los Angeles"}}
 users = {}
 
 
@@ -18,82 +14,81 @@ users = {}
 def home():
     """
     Root endpoint that returns a welcome message.
-    
+
     Returns:
         str: Welcome message
     """
-    # TODO: Return "Welcome to the Flask API!"
-    pass
+    return ("Welcome to the Flask API")
 
 
 @app.route("/data")
 def get_data():
     """
     Data endpoint that returns a list of all usernames.
-    
+
     Returns:
         JSON: List of usernames stored in the API
     """
-    # TODO: Return a JSON list of all usernames from the users dictionary
-    # Example: ["jane", "john"] if those users exist
-    pass
+    return (jsonify(list(users.keys())))
 
 
 @app.route("/status")
 def get_status():
     """
     Status endpoint that returns the API status.
-    
+
     Returns:
         str: Status message "OK"
     """
-    # TODO: Return "OK"
-    pass
+    return ("OK")
 
 
 @app.route("/users/<username>")
 def get_user(username):
     """
     Get user endpoint that returns user data for a specific username.
-    
+
     Args:
         username (str): Username to retrieve
-        
+
     Returns:
         JSON: User data or error message
     """
-    # TODO: Check if user exists in users dictionary
-    # If exists: return the user data as JSON
-    # If not exists: return {"error": "User not found"}
-    pass
+    user = users.get(username)
+    if user:
+        return (jsonify(user)), 200
+    else:
+        return (jsonify({"error": "User not found"})), 404
 
 
 @app.route("/add_user", methods=["POST"])
 def add_user():
     """
     Add user endpoint that accepts POST requests to add new users.
-    
+
     Expected JSON payload:
     {
         "username": "john",
-        "name": "John", 
+        "name": "John",
         "age": 30,
         "city": "New York"
     }
-    
+
     Returns:
         JSON: Success message with user data or error message
     """
-    # TODO: 
-    # 1. Get JSON data from request
-    # 2. Check if "username" is provided - if not, return 400 error with {"error": "Username is required"}
-    # 3. Add user to users dictionary using username as key
-    # 4. Return 201 status with success message and user data:
-    #    {"message": "User added", "user": {...user_data...}}
-    pass
+    data = request.get_json()
+    username = data.get("username")
+    if not username:
+        return (jsonify({"error": "Username is required"})), 400
+    users[username] = {
+        "username": username,
+        "name": data.get("name"),
+        "age": data.get("age"),
+        "city": data.get("city"),
+    }
+    return (jsonify({"message": "User added", "user": data})), 201
 
 
 if __name__ == "__main__":
-    # TODO: Run the Flask application
-    # app.run()
-    pass
+    app.run()
