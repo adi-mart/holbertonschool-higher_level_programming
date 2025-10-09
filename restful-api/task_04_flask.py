@@ -78,16 +78,17 @@ def add_user():
         JSON: Success message with user data or error message
     """
     data = request.get_json()
+    if not data or "username" not in data:
+        return jsonify({"error": "Username is required"}), 400
+
     username = data.get("username")
-    if not username:
-        return (jsonify({"error": "Username is required"})), 400
     users[username] = {
         "username": username,
         "name": data.get("name"),
         "age": data.get("age"),
         "city": data.get("city"),
     }
-    return (jsonify({"message": "User added", "user": data})), 201
+    return (jsonify({"message": "User added", "user": users[username]})), 201
 
 
 if __name__ == "__main__":
