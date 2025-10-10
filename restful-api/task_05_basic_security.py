@@ -47,7 +47,8 @@ def verify_password(username, password):
         str: Username if authentication successful, None otherwise
     """
     user = users.get(username)
-    if user and check_password_hash(user["password"], password):
+    if user and \
+            check_password_hash(user.get("password"), password):
         return username
 
 
@@ -82,10 +83,12 @@ def login():
     password = data.get("password")
     user = users.get(username)
 
-    if users and check_password_hash(user["password"], password):
+    if user and check_password_hash(user["password"], password):
         identity = {"username": username, "role": user["role"]}
         access_token = create_access_token(identity=identity)
         return jsonify({"access_token": access_token}), 200
+    else:
+        return jsonify({"error": "Invalid username or password"}), 401
 
 
 @app.route("/jwt-protected")
@@ -97,6 +100,7 @@ def jwt_protected():
     Returns:
         str: Success message if authenticated with valid JWT
     """
+    current_user = get_jwt_identity()
     return ("JWT Auth: Access Granted")
 
 
@@ -109,11 +113,11 @@ def admin_only():
     Returns:
         str or JSON: Success message if admin, error if not admin
     """
-    demande = get_jwt()
-    if demande.get("role") == "admin":
-        return ("Admin Access Granted")
+    current_user = get_jwt_identity()
+    if current_user.get("role") == "admin":
+        return "Admin Access: Granted"
     else:
-        return (jsonify({"error": "Admin access required"})), 403
+        return jsonify({"error": "Admin access required"}), 403
 
 
 @jwt.unauthorized_loader
