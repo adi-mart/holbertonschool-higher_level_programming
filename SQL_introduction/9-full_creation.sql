@@ -1,3 +1,6 @@
+-- Description: Creates the second_table table and inserts multiple rows.
+-- Usage: cat 9-full_creation.sql | mysql -hlocalhost -uroot -p [database_name]
+
 CREATE TABLE IF NOT EXISTS second_table (
     id INT,
     name VARCHAR(256),
