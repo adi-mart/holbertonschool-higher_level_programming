@@ -22,7 +22,7 @@ if __name__ == "__main__":
 
     # Execute query and fetch results sorted by id (ascending)
     # using .format as required by the exercise
-    query = "SELECT * FROM states WHERE name = '{}' " \
+    query = "SELECT * FROM states WHERE BINARY name = '{}' " \
         "ORDER BY states.id ASC".format(state_name)
     cur.execute(query)
     rows = cur.fetchall()
