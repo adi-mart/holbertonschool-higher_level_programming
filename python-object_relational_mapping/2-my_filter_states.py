@@ -23,7 +23,7 @@ if __name__ == "__main__":
     # using .format (unsafe, for demonstration only)
     query = (
         "SELECT * FROM states WHERE name = '{}' ORDER BY states.id ASC"
-    ).format(state_name)
+    ).format(query, (state_name,))
     cur.execute(query)
     rows = cur.fetchall()
 
