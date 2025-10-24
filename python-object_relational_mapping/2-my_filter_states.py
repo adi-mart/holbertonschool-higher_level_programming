@@ -20,10 +20,9 @@ if __name__ == "__main__":
     cur = db.cursor()
 
     # Execute query and fetch results sorted by id (ascending)
-    # using .format (unsafe, for demonstration only)
-    query = (
-        "SELECT * FROM states WHERE name = '{}' ORDER BY states.id ASC"
-    ).format(state_name,)
+    # using .format as required by the exercise
+    query = "SELECT * FROM states WHERE name = '{}' " \
+        "ORDER BY states.id ASC".format(state_name)
     cur.execute(query)
     rows = cur.fetchall()
 
