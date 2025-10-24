@@ -19,7 +19,7 @@ if __name__ == "__main__":
     cur = db.cursor()
 
     # Execute query and fetch results sorted by id (ascending)
-    cur.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC")
+    cur.execute("SELECT * FROM states WHERE name LIKE 'N%'")
     rows = cur.fetchall()
 
     for row in rows:
