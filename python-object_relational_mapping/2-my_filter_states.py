@@ -22,8 +22,10 @@ if __name__ == "__main__":
 
     # Execute query and fetch results sorted by id (ascending)
     # using .format (unsafe, for demonstration only)
-    cur.execute("SELECT * FROM states WHERE name = '{}'"
-                "ORDER BY id ASC".format(state_name))
+    query = (
+        "SELECT * FROM states WHERE name = '{}' ORDER BY id ASC"
+    ).format(state_name)
+    cur.execute(query)
     rows = cur.fetchall()
 
     for row in rows:
