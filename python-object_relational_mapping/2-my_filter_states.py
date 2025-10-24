@@ -16,14 +16,13 @@ if __name__ == "__main__":
 
     # Connect to the MySQL server on localhost:3306
     db = MySQLdb.connect(host="localhost", port=3306,
-                         user=user, passwd=password, db=db_name,
-                         states=state_name)
+                         user=user, passwd=password, db=db_name)
     cur = db.cursor()
 
     # Execute query and fetch results sorted by id (ascending)
     # using .format (unsafe, for demonstration only)
     query = (
-        "SELECT * FROM states WHERE name = '{}' ORDER BY id ASC"
+        "SELECT * FROM states WHERE name = '{}' ORDER BY states.id ASC"
     ).format(state_name)
     cur.execute(query)
     rows = cur.fetchall()
