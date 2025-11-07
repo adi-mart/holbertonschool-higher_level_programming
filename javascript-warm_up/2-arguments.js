@@ -7,4 +7,3 @@ if (argv[3] != null) {
 } else {
   console.log('No argument');
 }
-

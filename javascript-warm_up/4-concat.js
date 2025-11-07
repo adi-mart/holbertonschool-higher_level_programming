@@ -9,4 +9,3 @@ if (args2 == null) {
   args2 = undefined;
 }
 console.log(args1, 'is', args2);
-

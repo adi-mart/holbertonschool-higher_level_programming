@@ -11,4 +11,3 @@ if ((isNaN(num1)) || (isNaN(num2))) {
 function add (a, b) {
   return a + b;
 }
-
