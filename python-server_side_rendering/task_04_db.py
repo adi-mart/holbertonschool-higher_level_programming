@@ -70,7 +70,7 @@ def products():
     product_id = request.args.get('id')
 
     # Vérifier que le paramètre source est valide
-    if source not in ['json', 'csv']:
+    if source not in ['json', 'csv', 'sql']:
         return render_template('product_display.html', error="Wrong source")
 
     # Lire les données selon la source
