@@ -3,6 +3,7 @@
 from flask import Flask, render_template, request
 import json
 import csv
+import sqlite3
 
 app = Flask(__name__)
 
@@ -78,17 +79,17 @@ def products():
     elif source == 'csv':
         products_data = read_csv_file()
     else:  # sql
-        products_data = read_csv_file()
+        products_data = read_sql_database()
 
     # Vérifier si les données ont été lues correctement
     if products_data is None:
         return render_template(
-          'product_display.html', error="Error reading file")
+          'product_display.html', error="Error reading data source")
 
     # Si la liste est vide
-        if not products_data:
-            return render_template(
-              'product_display.html', error="No products found in database")
+    if not products_data:
+        return render_template(
+          'product_display.html', error="No products found in database")
 
     # Filtrer par ID si fourni
     if product_id:
